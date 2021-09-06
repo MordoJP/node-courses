@@ -2,6 +2,7 @@ const {Router} = require('express')
 const Course = require('../models/course')
 const router = Router()
 
+
 function mapCartItems(cart) {
   return cart.items.map(c => ({
     ...c.courseId._doc,
@@ -36,6 +37,7 @@ router.get('/', async (req, res) => {
   const user = await req.user
       .populate('cart.items.courseId')
       .execPopulate()
+
   const courses = mapCartItems(user.cart)
 
   res.render('card', {

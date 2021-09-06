@@ -27,6 +27,7 @@ const userSchema = new Schema({
     }
 })
 
+
 userSchema.methods.addToCart = function(course) {
     const items = [...this.cart.items]
     const idx = items.findIndex(c => {
@@ -45,6 +46,7 @@ userSchema.methods.addToCart = function(course) {
     this.cart = {items}
     return this.save()
 }
+
 
 userSchema.methods.removeFromCart = function(id) {
     let items = [...this.cart.items]
