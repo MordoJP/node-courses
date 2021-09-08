@@ -28,4 +28,14 @@ router.post('/login', async (req, res) => {
     })
 })
 
+router.post('/register', async (req, res) => {
+    try () {
+        const {email, password, repeat} = req.body
+
+
+    } catch (e) {
+        console.log(e)
+    }
+})
+
 module.exports = router
