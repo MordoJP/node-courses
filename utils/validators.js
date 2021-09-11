@@ -51,3 +51,9 @@ exports.loginValidators = [
         .isAlphanumeric().withMessage('Пароль должен сожержать латинские буквы или цифры')
         .trim()
 ]
+
+exports.courseValidators = [
+    body('title').isLength({min: 3}).withMessage('Минимальная длина названия 3 символа').trim(),
+    body('price').isNumeric().withMessage('Введите корректную цену'),
+    body('img', 'Введите корректный Url изображения').isURL()
+]
