@@ -13,7 +13,7 @@
                 <p class="alert">{{loginError}}</p>
             {{/if}}
 
-            <form action="/auth/login" method="POST">
+            <form action="/auth/login" method="POST" novalidate>
                 <div class="input-field">
                     <input id="email" name="email" type="email" class="validate" required>
                     <label for="email">Email</label>
@@ -38,7 +38,7 @@
             {{#if registerError}}
                 <p class="alert">{{registerError}}</p>
             {{/if}}
-            <form action="/auth/register" method="POST">
+            <form action="/auth/register" method="POST" novalidate>
                 <div class="input-field">
                     <input id="name" name="name" type="text" class="validate" required>
                     <label for="name">Ваше имя</label>
