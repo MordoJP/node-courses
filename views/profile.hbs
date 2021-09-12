@@ -1,1 +1,39 @@
 <h1>Профиль</h1>
+
+<div class="row">
+    <div class="col s6">
+        <img
+             class="avatar"
+             src="https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5c7227ada7ea4310004351c2%2F0x0.jpg%3Fbackground%3D000000%26cropX1%3D680%26cropX2%3D2462%26cropY1%3D560%26cropY2%3D2343"
+             alt=""
+        >
+
+        <p>Аватара нет</p>
+    </div>
+
+    <div class="col s6">
+        <form action="/profile" method="POST">
+            <p>Ваше email: <strong>{{user.email}}</strong></p>
+
+            <div class="input-field">
+                <input id="name" name="name" type="text" class="validate" required value="{{user.name}}">
+                <label for="name">Ваше имя</label>
+                <span class="helper-text" data-error="Имя не может быть пустым"></span>
+            </div>
+
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>Аватар</span>
+                    <input type="file" name="avatar">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+
+            <input type="hidden" name="_csrf" value="{{csrf}}">
+
+            <button type="submit" class="btn">Изменить</button>
+        </form>
+    </div>
+</div>
