@@ -1,6 +1,5 @@
 const {Router} = require('express')
 const {validationResult} = require('express-validator/check')
-
 const Course = require('../models/course')
 const auth = require('../middleware/auth')
 const {courseValidators} = require('../utils/validators')
@@ -34,8 +33,6 @@ router.get('/:id/edit', auth, async (req, res) => {
 
   try {
     const course = await Course.findById(req.params.id)
-
-    console.log()
     if (!isOwner(course, req)) {
       return res.redirect('/courses')
     }
@@ -65,7 +62,6 @@ router.post('/edit', auth, courseValidators, async (req, res) => {
     }
     Object.assign(course, req.body)
     await course.save()
-    await Course.findByIdAndUpdate(id, req.body)
     res.redirect('/courses')
   } catch (e) {
     console.log(e)

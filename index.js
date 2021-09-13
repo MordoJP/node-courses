@@ -3,6 +3,8 @@ const path = require('path')
 const csrf = require('csurf')
 const flash = require('connect-flash')
 const mongoose = require('mongoose')
+const helmet = require('helmet')
+const compression = require('compression')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
 const MongoStore = require('connect-mongodb-session')(session)
@@ -48,8 +50,11 @@ app.use(session({
 app.use(fileMiddleware.single('avatar'))
 app.use(csrf())
 app.use(flash())
+app.use(helmet())
+app.use(compression())
 app.use(varMiddleware)
 app.use(userMiddleware)
+
 
 app.use('/', homeRoutes)
 app.use('/add', addRoutes)
@@ -76,3 +81,5 @@ async function start() {
 }
 
 start()
+
+
